@@ -15,11 +15,8 @@ function getQuestionOfCategory(category) {
     console.log('Getting question of category', category);
     var dataFile = path.join(dataFolder, category);
     var lines = fs.readFileSync(dataFile).toString().split('\n');
-    console.log(lines);
     var size = parseInt(lines[0]);
     var index = Math.floor(Math.random()*size) + 1;
-    console.log(index);
-    console.log(lines[index]);
     return lines[index];
 }
 
@@ -27,8 +24,8 @@ module.exports = {
     showQuestion: function(req, res, next) {
         var categories = getCategories();
         var category;
-        if (req.category) {
-            category = req.category;
+        if (req.query.category) {
+            category = req.query.category;
         } else {
             category = getRandomFrom(categories);
         }
@@ -38,7 +35,8 @@ module.exports = {
         res.render('index', {
             title: '1to1tool',
             question: question,
-            categories: categories
+            categories: categories,
+            urlEncodedCategories: categories.map(encodeURIComponent)
         });            
     }
 };
