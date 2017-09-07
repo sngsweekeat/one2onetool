@@ -13,10 +13,10 @@
       <div class="jumbotron">
         <h3 style="text-align: center">What’s one thing we could change about work for you that would improve your personal life?</h3>
       </div>
-      <h4 style="text-align: center">-- OR --<br/>you could try to</h4>
-      <button type="button" class="btn btn-primary btn-block">Establish rapport/trust</button>
-      <button type="button" class="btn btn-primary btn-block">Discuss personal/professional development</button>
-      <button type="button" class="btn btn-primary btn-block">Receive feedback</button>
+      <h4 style="text-align: center">-- OR --<br/>more specifically:</h4>
+      {{#each categories}}
+        <button type="button" class="btn btn-primary btn-block">{{this}}</button>
+      {{/each}}
   	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
