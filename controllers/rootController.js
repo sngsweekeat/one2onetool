@@ -23,17 +23,12 @@ function getQuestionOfCategory(category) {
 module.exports = {
     showQuestion: function(req, res, next) {
         var categories = getCategories();
-        var category;
-        if (req.query.category) {
-            category = req.query.category;
-        } else {
-            category = getRandomFrom(categories);
-        }
-        console.log(category);
+        var category = req.query.category ? req.query.category : getRandomFrom(categories);
         var question = getQuestionOfCategory(category);
 
         res.render('index', {
             title: '1to1tool',
+            prompt: 'Having a 1-to-1 with your staff? Here\'s a question you could ask:',
             question: question,
             categories: categories,
             urlEncodedCategories: categories.map(encodeURIComponent)
