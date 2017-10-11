@@ -9,15 +9,14 @@ function getRandomFrom(items) {
 module.exports = {
     showQuestion: function(req, res, next) {
         var cats = categories.getAll();
-        var category = req.query.category ? req.query.category : randomItem.get(cats);
+        var category = req.query.category ? req.query.category : randomItem.getIndex(cats.length);
         var question = questions.getRandom(category);
 
         res.render('index', {
             title: '1to1tool',
             prompt: 'Having a 1-to-1 with your staff? Here\'s a question you could ask:',
             question: question,
-            categories: cats,
-            urlEncodedCategories: cats.map(encodeURIComponent)
+            categories: cats
         });            
     }
 };

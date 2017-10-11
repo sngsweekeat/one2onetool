@@ -1,7 +1,5 @@
-const fs = require('fs');
-const path = require('path');
-const dataFolder = path.join(__dirname, '../data');
+const repo = require('./questionRepository');
 
 exports.getAll = function() {
-    return fs.readdirSync(dataFolder);    
+    return repo.categoryTitles();
 }

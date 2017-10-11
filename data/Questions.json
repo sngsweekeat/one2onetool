@@ -1,0 +1,49 @@
+{
+    "categories" : [
+        {
+            "title" : "Organization Matters",
+            "prompts" : [
+                "Here's a question concerning the organization:",
+                "So you want to talk about organization matters, great! Here's a question to discuss:"
+            ],
+            "questions" : [
+                "What’s one thing we’d be *crazy* not to do within the next 6 months to improve the organization?",
+                "If you were top dog in the organization, what would you change?",
+                "Are there any aspects of our culture you wish you could change?",
+                "What is the #1 Problem at our company? Why?",
+                "What would convince you to leave for a job somewhere else?",
+                "Is everyone pulling their weight on the team?",
+                "What’s an inexpensive thing we could do to improve our office environment for the team?",
+                "Who on the team do you have the most difficulty working with? Why?",
+                "Who is kicking ass on the team? What have they done?",
+                "Are you uncomfortable giving any of your peers constructive criticism? If so, why?",
+                "Have you seen something recently and thought to yourself ‘I wish we’d done that’?",
+                "Is there something we should measure in the company that we currently don’t?",
+                "Have you seen someone here do great work that’s gone unnoticed?",
+                "Are there things you don’t know about the company that you feel you should know?"
+            ]
+        },
+        {
+            "title" : "Personal Development",
+            "prompts" : [
+                "It's important to develop your staff. Try asking:",
+                "Good choice! Here's a question on personal development:"
+            ],
+            "questions" : [
+                "What work are you doing here that you feel is most in line with your long term goals?",
+                "What are your super powers? What powers would you like to develop?",
+                "Do you feel challenged at work? Are you learning new things?",
+                "What skills would you like to develop right now?",
+                "Who in the company would you like to learn from? What do you want to learn?",
+                "What additional training or education would you like?",
+                "Are there any roles in the company you’d like to learn more about?",
+                "Do you feel like you’re making progress on your big goals here? Why or why not?",
+                "What’s one thing we could do today to help you with your long term goals?",
+                "Do you feel we’re helping you advance your career at a pace you would like?",
+                "Is there any part of the organization you wish you were able to interact with more?",
+                "Is there an area outside your current role where you feel you could be contributing?",
+                "Is there anyone at the company you wish you could apprentice under for a few weeks?"
+            ]
+        }
+    ]
+}
