@@ -1,11 +1,11 @@
 exports.rnd = Math.random;
 
-exports.get = function(arr, rndFunc) {
-    var rndFunc = rndFunc || exports.rnd;
-    return arr[Math.floor(rndFunc()*arr.length)];    
-}
+exports.get = function get(arr, rndFunc) {
+  const random = rndFunc || exports.rnd;
+  return arr[Math.floor(random() * arr.length)];
+};
 
-exports.getIndex = function(upper) {
-    var rndFunc = rndFunc || exports.rnd;
-    return Math.floor(rndFunc()*upper);
-}
+exports.getIndex = function getIndex(upper, rndFunc) {
+  const random = rndFunc || exports.rnd;
+  return Math.floor(random() * upper);
+};
