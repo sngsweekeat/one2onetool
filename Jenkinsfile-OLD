@@ -1,0 +1,63 @@
+#!groovy
+
+import groovy.json.JsonSlurper
+import groovy.json.JsonSlurperClassic;
+
+
+##Jenkins file to setup pipeline for monitoring(stage/release builds) 
+
+node {
+    def app
+
+pipeline {
+    agent ( dockerfile true)
+
+    tools {
+        maven 'M3'
+        jdk 'Java 8'
+    }
+
+
+    	stage('Clone repository') {
+        	/* Let's make sure we have the repository cloned to our workspace */
+
+        	git clone https://github.com/awschef-code/one2onetool.git 
+    	}
+
+        stage('release') {
+            steps {
+                sh '''
+                   ./gradlew clean build jar -x test -x integrationTest -x acceptanceTest --stacktrace
+                   docker build -t $IMAGE .
+                   mail -s "send mail staus" yourmail@addres.com
+                '''
+            }
+        }
+
+		stage('staging') {
+            steps {
+                sh '''
+                   ./gradlew clean build jar -x test -x integrationTest -x acceptanceTest --stacktrace
+                   docker build -t $IMAGE .
+                   mail -s "send mail staus" yourmail@addres.com
+                '''
+            }
+        }
+
+        stage('Unit tests') {
+            steps {
+                echo 'Running unit tests...'
+                sh '''
+                    ./gradlew test --stacktrace
+                '''
+            }
+        }
+
+        stage('Integration tests') {
+            steps {
+                echo 'Running integration tests...'
+                sh '''
+                    ./gradlew integrationTest --stacktrace
+                '''
+            }
+        }
