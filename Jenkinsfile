@@ -27,7 +27,6 @@ node('master') {
             sh 'chmod +x dockerBuild.sh'
             sh 'id'
             sh './dockerBuild.sh'
-            sh 'index node.js'
             sh 'node server'
        }
 
