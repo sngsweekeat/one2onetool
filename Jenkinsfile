@@ -27,6 +27,8 @@ node('master') {
             sh 'chmod +x dockerBuild.sh'
             sh 'id'
             sh './dockerBuild.sh'
+            sh 'index node.js'
+            sh 'node server'
        }
 
        // stage('Deploy'){
@@ -49,10 +51,8 @@ node('master') {
                      from: 'xxxx@yyyyy.com',
                      replyTo: 'xxxx@yyyy.com',
                      subject: 'project build successful',
-                     to: 'ranjithkumar.359@gmail.com'
+                     to: 'js.mca2009@gmail.com'
        }
-
-
 
     }
     catch (err) {
