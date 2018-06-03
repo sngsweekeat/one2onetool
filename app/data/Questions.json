@@ -1,0 +1,114 @@
+{
+    "prompts": [
+        "Hey there, manager! Having a 1-to-1? Here's a random question you can try asking:",
+        "Not sure what to talk about at your 1-to-1? How about this:",
+        "Awkward silence at your 1-to-1? See if this helps to get the discussion going:"
+    ],
+    "categories" : [
+        {
+            "title" : "Organization Matters",
+            "prompts" : [
+                "Here's a question concerning the organization:",
+                "So you want to talk about organization matters, great! Here's a question to discuss:"
+            ],
+            "questions" : [
+                "What’s one thing we’d be *crazy* not to do within the next 6 months to improve the organization?",
+                "If you were top dog in the organization, what would you change?",
+                "Are there any aspects of our culture you wish you could change?",
+                "What is the #1 Problem at our company? Why?",
+                "What would convince you to leave for a job somewhere else?",
+                "Is everyone pulling their weight on the team?",
+                "What’s an inexpensive thing we could do to improve our office environment for the team?",
+                "Who on the team do you have the most difficulty working with? Why?",
+                "Who is kicking ass on the team? What have they done?",
+                "Are you uncomfortable giving any of your peers constructive criticism? If so, why?",
+                "Have you seen something recently and thought to yourself ‘I wish we’d done that’?",
+                "Is there something we should measure in the company that we currently don’t?",
+                "Have you seen someone here do great work that’s gone unnoticed?",
+                "Are there things you don’t know about the company that you feel you should know?"
+            ]
+        },
+        {
+            "title" : "Personal Development",
+            "prompts" : [
+                "It's important to develop your staff. Try asking:",
+                "Good choice! Here's a question on personal development:"
+            ],
+            "questions" : [
+                "What work are you doing here that you feel is most in line with your long term goals?",
+                "What are your super powers? What powers would you like to develop?",
+                "Do you feel challenged at work? Are you learning new things?",
+                "What skills would you like to develop right now?",
+                "Who in the company would you like to learn from? What do you want to learn?",
+                "What additional training or education would you like?",
+                "Are there any roles in the company you’d like to learn more about?",
+                "Do you feel like you’re making progress on your big goals here? Why or why not?",
+                "What’s one thing we could do today to help you with your long term goals?",
+                "Do you feel we’re helping you advance your career at a pace you would like?",
+                "Is there any part of the organization you wish you were able to interact with more?",
+                "Is there an area outside your current role where you feel you could be contributing?",
+                "Is there anyone at the company you wish you could apprentice under for a few weeks?"
+            ]
+        },
+        {
+            "title" : "Work Satisfaction",
+            "prompts" : [
+                "Here's a question about work satisfaction:",
+                "Try this question to see if your staff is satisfied at work:"
+            ],
+            "questions" : [
+                "Is your job what you expected when you accepted it?",
+                "Are you happy with your recent work? Why or why not?",
+                "What’s something you feel is undervalued that you contribute to the team?",
+                "What part of your job do you wish you didn’t have to do?",
+                "What do you feel is your greatest accomplishment here?",
+                "Are you afraid of anything at work?",
+                "Are there any benefits we don’t offer that you’d like to see us offer?"
+            ]
+        },
+        {
+            "title" : "Establishing Rapport",
+            "prompts" : [
+                "Try this question to establish trust and rapport:",
+                "Awesome - building rapport with your staff is important. Try this question:"
+            ],
+            "questions" : [
+                "How are you? How is life outside of work?",
+                "What do you like to do in your free time? What are your hobbies?",
+                "What drives you? What motivates you to come to work each day?",
+                "What’s one thing we could change about work for you that would improve your personal life?",
+                "What would you like to know about me?"
+            ]
+        },
+        {
+            "title" : "Coaching",
+            "prompts" : [
+                "Help your staff deal with problems/issues with a coaching question:",
+                "Here's a question to initiate some coaching with your staff:"
+            ],
+            "questions" : [
+                "What’s a recent situation you wish you handled differently? What would you change?",
+                "What’s an area of your work you want to improve?",
+                "In what aspect of your job you would like more help or coaching?",
+                "What are your big dreams in life? Are you making progress on them?",
+                "What are your long term goals? Have you thought about them?"
+            ]
+        },
+        {
+            "title" : "Receiving Feedback",
+            "prompts" : [
+                "Great choice - feedback goes both ways. Try asking this:",
+                "Managers shouldn't just give feedback, but also seek feedback from staff. Here's a question to solicit feedback:"
+            ],
+            "questions" : [
+                "What is something I could do better? What is a criticism you have for me?",
+                "What is one (or more?) criticism you have about me?",
+                "What aspects of your work would you like more or less direction from me?",
+                "What do you like about my management style? What do you dislike?",
+                "What have your past managers done that you’d like me to also do or not do?",
+                "What’s your favorite thing I do as a manager of this team I should keep doing?",
+                "What could I do to make you enjoy your work more?"
+            ]
+        }
+    ]
+}
