@@ -30,15 +30,11 @@ node('master') {
             sh 'node server'
        }
 
-       // stage('Deploy'){
-       //
-       //   echo 'Push to Repo'
-       //   sh './dockerPushToRepo.sh'
-       //
-       //   echo 'ssh to web server and tell it to pull new image'
-       //   sh 'ssh deploy@xxxxx.xxxxx.com running/xxxxxxx/dockerRun.sh'
-       //
-       // }
+       stage('Deploy')
+      
+            echo 'We can verify the new node.js application run'
+            sh './jenkins/deliver.sh'
+        }
 
        stage('Cleanup'){
 
