@@ -14,12 +14,9 @@ node('master') {
          env.NODE_ENV = "test"
 
          print "Environment will be : ${env.NODE_ENV}"
-
-         sh 'node -v'
-         sh 'npm prune'
-         sh 'npm install'
-         sh 'npm test'
-
+         
+         sh 'yum install -y gcc-c++ make ; curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash - ; yum install nodejs -y'
+         sh 'node -v ;npm prune ;  npm test'
        }
 
        stage('Build Docker'){
