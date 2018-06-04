@@ -1,5 +1,5 @@
 node('master') {
-
+     def new-prod-testing
 
     currentBuild.result = "SUCCESS"
 
@@ -34,7 +34,7 @@ node('master') {
       
             echo 'We can verify the new node.js application run'
             sh './jenkins/deliver.sh'
-            sh 'docker build -t new-prod-testing ${PWD}/Dockerfile
+            sh 'docker build -t $new-prod-testing ${PWD}/Dockerfile
             sh 'docker run -d -p 8089:3000 -t $new-prod-testing'
         }
 
