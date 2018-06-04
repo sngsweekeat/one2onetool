@@ -33,7 +33,7 @@ aws ec2 authorize-security-group-ingress --group-name devops-sg --protocol tcp -
 aws ec2 create-key-pair --key-name devops-key --query '<keypath>' --output text > devenv-key.pem
 chmod 400 devenv-key.pem
 
-Instance_ID=`aws ec2 run-instances --image-id ami-5b673c34 --subnet-id subnet-xxxxxxxx --security-group-ids sg-b018ced5 --count 1 --instance-type t2.micro --key-name devenv-key --query 'Instances[0].InstanceId'`
+Instance_ID=`aws ec2 run-instances --image-id ami-7d95b612 --subnet-id subnet-xxxxxxxx --security-group-ids sg-b018ced5 --count 1 --instance-type t2.micro --key-name devenv-key --query 'Instances[0].InstanceId'`
 wait 60
 Public_IpAddress=`aws ec2 describe-instances --instance-ids $Instance_ID --query 'Reservations[0].Instances[0].PublicIpAddress'`
 
