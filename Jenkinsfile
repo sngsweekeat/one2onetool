@@ -1,5 +1,4 @@
 node('master') {
-     def new-prod-testing
 
     currentBuild.result = "SUCCESS"
 
