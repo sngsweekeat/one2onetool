@@ -29,7 +29,7 @@ node('master') {
             sh 'node server'
        }
 
-       stage('Deploy')
+       stage('Deploy'){
       
             echo 'We can verify the new node.js application run'
             sh './jenkins/deliver.sh'
@@ -47,9 +47,8 @@ node('master') {
                      subject: 'project build successful',
                      to: 'js.mca2009@gmail.com'
        }
-
-    }
-    catch (err) {
+}
+       catch (err) {
 
         currentBuild.result = "FAILURE"
 
