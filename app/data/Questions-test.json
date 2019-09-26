@@ -1,0 +1,30 @@
+{
+    "prompts": [
+        "Hey there, manager! This is just a test:",
+        "Yo, this is just some test data, nothing to see here:"
+    ],
+    "categories" : [
+        {
+            "title" : "Where to eat ha?",
+            "prompts" : [
+                "Here's some cheap, but tasteless food:",
+                "Taste is unimportant, food is just for sustenance. Just eat this:"
+            ],
+            "questions" : [
+                "Brown rice, with brown water.",
+                "Plain white bread. That's it."
+            ]
+        },
+        {
+            "title" : "Stuff to do on weekends",
+            "prompts" : [
+                "Weekends are for wimps; real men work 24/7:",
+                "You have no life, just accept it:"
+            ],
+            "questions" : [
+                "Go back to office and work; don't bring any money so you won't be distracted by the possibility of getting any food.",
+                "Your project is overdue! Get to work!"
+            ]
+        }
+    ]
+}

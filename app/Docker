@@ -1,0 +1,9 @@
+FROM node:7
+WORKDIR /app
+echo pwd
+COPY . /app
+echo pwd
+RUN npm install
+COPY . /app
+CMD node index.js
+EXPOSE 8000:3000

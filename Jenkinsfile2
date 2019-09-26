@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+
+    parameters {
+         string(name: 'deployment', defaultValue: '<IP>', description: 'Deployment to AWS Public Cloud')
+    }
+
+    triggers {
+         pollSCM('* * * * *')
+     }
+
+stages{
+
+        stage('checkout scm'){
+        
+            checkout scm
+        }
+        stage('setup of default tools for docker setup'){
+            steps {
+             sh 'chmod 400 Clearpass-testmachine.pem'
+             sh "ssh -o StrictHostKeyChecking=no -i '/home/jenkins/Clearpass-testmachine.pem' ec2-user@13.232.87.231 'sudo yum install -y gcc-c++ make git docker ; curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash - ; sudo yum install nodejs -y|node -v '"'
+            }
+            post {
+                success {
+                    echo 'Now Archiving...'
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
+                failure {
+                    echo 'SSh failure!!'
+                }
+            }
+        }
+
+        stage('Docker service start'){
+            
+            sh "ssh -o StrictHostKeyChecking=no -i 'Clearpass-testmachine.pem' ec2-user@13.232.87.231 '/sbin/service docker start ; docker info'"
+            post {
+                success {
+                    echo "Docker setup completed successfully"
+                }
+                failure {
+                    echo "Docker setup failed"
+                }
+            }
+       }
+
+        stage ('Deployments'){
+            echo "deploying to aws cloud machine"
+            sh './dockerPushToRepo.sh'
+                    }
+                }
+            }
+        }
+    }
+}
