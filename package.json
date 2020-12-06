@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sngsweekeat/one2onetool.git"
+    "url": "git+https://github.com/quattro1982/one2onetool.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sngsweekeat/one2onetool/issues"
+    "url": "https://github.com/quattro1982/one2onetool/issues"
   },
-  "homepage": "https://github.com/sngsweekeat/one2onetool#readme",
+  "homepage": "https://github.com/quattro1982/one2onetool#readme",
   "dependencies": {
     "async": "^1.4.2",
     "body-parser": "~1.13.2",

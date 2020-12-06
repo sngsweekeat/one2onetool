@@ -1,6 +1,8 @@
-node_modules
 test
 aws
 dockerhub_password.txt
 task-def.*
 Dockerfile
+.idea
+node_modules
+build.sh
