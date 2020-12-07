@@ -3,6 +3,8 @@
 set -e
 set -x
 
+trap 'alert' ERR
+
 ##########
 # All these variables are ideally defined in the CI tool (Jenkins, GitHub etc)
 ##########
@@ -22,6 +24,14 @@ function alert() {
 #subject: Alert - Build Failure
 #from: Build Server
 #EOF
+}
+
+function increment_version {
+  # Currently we are only incrementing major versions for simplicity
+  APP_VERSION=`cat package.json | jq '.version' | tr -d '"' | perl -ne '/(^\d+.*?)\.(\d+.*?)\.(\d+.*)/ and print "@{[$1+1]}.$2.$3"'`
+  # Increment version using npm
+  npm --no-git-tag-version version $APP_VERSION
+  # OR npm version major | npm version minor
 }
 
 #function install_deps() {
@@ -66,27 +76,24 @@ function build(){
   docker build --build-arg QNDATA=$DATA_FILE -t $CI_REGISTRY_USER/$CI_REPOSITORY:$DOCKER_TAG .
   docker push $IMAGE_NAME
   docker image prune -f
-  isfailed
 }
 
 function deploy() {
   # Assume CLI has been installed and AWS Environment set up for ECS & Fargate
   cat aws/fargate/$BRANCH_NAME.json | jq --arg imgname "$IMAGE_NAME" '.containerDefinitions[0].image=$imgname' > /tmp/task-def.json
 
-  #cat /tmp/task-def.json
   TASK_DEFINITION=`aws ecs register-task-definition --cli-input-json file:///tmp/task-def.json`
   NEW_TASK_DEFINITION=`echo $TASK_DEFINITION | jq '.[] | .taskDefinitionArn' | cut -d '/' -f 2 | tr -d '"'`
   echo $NEW_TASK_DEFINITION
-  isfailed
 
   # Assume service already exists, so we only need to update the task definitions for the service
   SERVICE=`aws ecs update-service --cluster $AWS_FARGATE_CLUSTER_NAME --service $AWS_FARGATE_SERVICE_NAME-$BRANCH_NAME --task-definition $NEW_TASK_DEFINITION --desired-count $AWS_FARGATE_COUNT`
-  isfailed
+
 }
 
 # Get Version from package.json
-MAJOR_VERSION=`jq -r '.version' package.json`
-echo "App version is $MAJOR_VERSION"
+increment_version
+echo "New app version is $APP_VERSION"
 
 # Get Current Branch name
 BRANCH_NAME=`git branch --show-current`
@@ -95,7 +102,7 @@ echo "Running on branch $BRANCH_NAME"
 if [ $BRANCH_NAME == "staging" ] ; then
   echo "Running on staging branch"
   DATA_FILE="Questions-test.json"
-  DOCKER_TAG=$MAJOR_VERSION-$BRANCH_NAME
+  DOCKER_TAG=$APP_VERSION-$BRANCH_NAME
 
 elif [ $BRANCH_NAME == "release" ] ; then
   echo "Running on $BRANCH_NAME branch"
