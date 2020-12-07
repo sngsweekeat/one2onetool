@@ -24,18 +24,18 @@ function alert() {
 #EOF
 }
 
-function install_deps() {
-  # Install dependencies
-  # sudo yum install -y yum-utils jq
-  # sudo yum-config-manager \
-  #  --add-repo \
-  #  https://download.docker.com/linux/centos/docker-ce.repo
-
-  # sudo yum install docker-ce docker-ce-cli containerd.io
-  # sudo curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
-  # sudo chmod +x /usr/local/bin/ecs-cli
-  # ecs-cli --version
-}
+#function install_deps() {
+#  # Install dependencies
+#  # sudo yum install -y yum-utils jq
+#  # sudo yum-config-manager \
+#  #  --add-repo \
+#  #  https://download.docker.com/linux/centos/docker-ce.repo
+#
+#  # sudo yum install docker-ce docker-ce-cli containerd.io
+#  # sudo curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
+#  # sudo chmod +x /usr/local/bin/ecs-cli
+#  # ecs-cli --version
+#}
 
 function isfailed(){
   retval=$?
@@ -60,10 +60,12 @@ function test() {
 function build(){
   # Assume docker packages have been installed
   # Will not include the password to docker hub
+  IMAGE_NAME=$CI_REGISTRY_USER/$CI_REPOSITORY:$DOCKER_TAG
   echo "Data file for $BRANCH_NAME is $DATA_FILE"
   cat ./dockerhub_password.txt | docker login -u $CI_REGISTRY_USER --password-stdin $DOCKER_REGISTRY
-  docker build --build-arg QNDATA=$DATA_FILE -t $CI_REGISTRY_USER/$CI_REPOSITORY:$MAJOR_VERSION -t $CI_REGISTRY_USER/$CI_REPOSITORY:$DOCKER_TAG .
+  docker build --build-arg QNDATA=$DATA_FILE -t $CI_REGISTRY_USER/$CI_REPOSITORY:$DOCKER_TAG .
   docker push $IMAGE_NAME
+  docker image prune -f
   isfailed
 }
 
@@ -94,13 +96,11 @@ if [ $BRANCH_NAME == "staging" ] ; then
   echo "Running on staging branch"
   DATA_FILE="Questions-test.json"
   DOCKER_TAG=$MAJOR_VERSION-$BRANCH_NAME
-  IMAGE_NAME=$CI_REGISTRY_USER/$CI_REPOSITORY:$DOCKER_TAG
 
 elif [ $BRANCH_NAME == "release" ] ; then
   echo "Running on $BRANCH_NAME branch"
   DATA_FILE="Questions.json"
   DOCKER_TAG="latest"
-  IMAGE_NAME=$CI_REGISTRY_USER/$CI_REPOSITORY:$DOCKER_TAG
 else
   echo "Incorrect Build Branch"
   exit 1
