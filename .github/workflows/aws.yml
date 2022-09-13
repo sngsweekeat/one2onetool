@@ -36,7 +36,7 @@ env:
   ECS_SERVICE: one2onetool                 # set this to your Amazon ECS service name
   ECS_CLUSTER: fargate-cluster                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: tesk-definition.json # set this to the path to your Amazon ECS task definition
-  ENVTYPE: ${{ BRANCH_NAME }}                                           # file, e.g. .aws/task-definition.json
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
   CONTAINER_NAME: one2onetool           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
 
@@ -86,7 +86,7 @@ jobs:
         task-definition: ${{ env.ECS_TASK_DEFINITION }}
         container-name: ${{ env.CONTAINER_NAME }}
         image: ${{ steps.build-image.outputs.image }}
-        environment-variables: "ENVTYPE=${{ env.ENVTYPE }}"
+        environment-variables: "ENVTYPE=${{ env.BRANCH_NAME }}"
         #environment-variables: "ENVTYPE=dev"
 
     - name: Deploy Amazon ECS task definition
