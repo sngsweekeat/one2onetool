@@ -86,7 +86,7 @@ jobs:
         task-definition: ${{ env.ECS_TASK_DEFINITION }}
         container-name: ${{ env.CONTAINER_NAME }}
         image: ${{ steps.build-image.outputs.image }}
-        environment-variables: "ENVTYPE=$BRANCH_NAME"
+        environment-variables: "ENVTYPE=  ${BRANCH_NAME}"
         #environment-variables: "ENVTYPE=dev"
 
     - name: Deploy Amazon ECS task definition
