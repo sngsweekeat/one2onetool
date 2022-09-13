@@ -1,7 +1,7 @@
 FROM node:16
 
-ARG ENVDATA
-ENV DATA_FILE=${ENVDATA}
+#ARG ENVDATA = "prod"
+ENV ENVTYPE="prod"
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -19,4 +19,6 @@ RUN npm run test
 COPY . .
 
 EXPOSE 3000
-ENTRYPOINT [ "node","index.js" ]
+RUN echo $ENVTYPE
+#ENTRYPOINT [ "npm","run",$ENVTYPE ]
+ENTRYPOINT ["bash","/usr/src/app/startup.sh"]
