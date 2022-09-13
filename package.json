@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "export  NODE_ENV=developmenti && export DATA_FILE='Questions-test.json' &&  node index.js",
+    "staging": "export  NODE_ENV=development && export DATA_FILE='Questions-test.json' &&  node index.js",
     "prod": "export  NODE_ENV=production && node index.js",
     "test": "jest"
   },
