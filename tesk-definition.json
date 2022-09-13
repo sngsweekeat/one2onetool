@@ -37,7 +37,7 @@
       "memoryReservation": 128,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "718182037734.dkr.ecr.us-east-1.amazonaws.com/one2onetool",
+      "image": "718182037734.dkr.ecr.us-east-1.amazonaws.com/one2onetool:latest",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -64,7 +64,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:718182037734:task-definition/one2onetool:2",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:718182037734:task-definition/one2onetool:3",
   "family": "one2onetool",
   "requiresAttributes": [
     {
@@ -123,7 +123,7 @@
   "networkMode": "awsvpc",
   "runtimePlatform": null,
   "cpu": "256",
-  "revision": 2,
+  "revision": 3,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
