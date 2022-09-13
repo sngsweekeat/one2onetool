@@ -36,7 +36,7 @@ env:
   ECS_SERVICE: one2onetool                 # set this to your Amazon ECS service name
   ECS_CLUSTER: fargate-cluster                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: tesk-definition.json # set this to the path to your Amazon ECS task definition
-  ENVTYPE: $BRANCH_NAME                                           # file, e.g. .aws/task-definition.json
+  ENVTYPE: {{ BRANCH_NAME }}                                           # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: one2onetool           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
 
