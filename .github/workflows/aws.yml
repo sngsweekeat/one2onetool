@@ -31,6 +31,7 @@ on:
     branches: [ "master", "staging" ]
 
 env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
   AWS_REGION: us-east-1                    # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: one2onetool           # set this to your Amazon ECR repository name
   ECS_SERVICE: one2onetool                 # set this to your Amazon ECS service name
@@ -94,5 +95,5 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: ${{ env.ECS_SERVICE }}
-        cluster: ${{ env.ECS_CLUSTER }}
+        cluster: ${{ env.ECS_CLUSTER }}-${{ env.BRANCH_NAME }}
         wait-for-service-stability: true
