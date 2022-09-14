@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "staging": "export  NODE_ENV=development && export DATA_FILE='Questions-test.json' &&  node index.js",
-    "master": "export  NODE_ENV=production && node index.js",
+    "release": "export  NODE_ENV=production && node index.js",
     "test": "jest"
   },
   "repository": {
